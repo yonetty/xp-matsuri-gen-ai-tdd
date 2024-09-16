@@ -1,0 +1,21 @@
+languages:
+  - name: JavaScript
+    extensions:
+      - .js
+      - .jsx
+    commentRegex: ^\s*(\/\/|\/\*|\*)
+  - name: Markdown
+    extensions:
+      - .md
+      - .markdown
+    commentRegex: ^\s*<!--
+  - name: YAML
+    extensions:
+      - .yml
+      - .yaml
+    commentRegex: ^\s*#
+
+excludedDirectories:
+  - node_modules
+  - dist
+  - build

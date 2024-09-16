@@ -36,11 +36,11 @@
 ### 実行例（コマンド）
 
 ```
-$ node index.js ./src
+$ node src/index.js ./src
 ```
 
 ```
-$ node index.js ./src js,ts
+$ node src/index.js ./src javascript,yaml
 ```
 
 ### 実行例（出力）

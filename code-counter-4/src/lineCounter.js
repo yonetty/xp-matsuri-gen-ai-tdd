@@ -49,7 +49,14 @@ async function countLines(files, config) {
 }
 
 function isCommentLine(line, commentPatterns) {
-  return commentPatterns.some((pattern) => pattern.test(line));
+  return commentPatterns.some((pattern) => {
+    if (pattern instanceof RegExp) {
+      return pattern.test(line);
+    } else if (typeof pattern === "string") {
+      return new RegExp(pattern).test(line);
+    }
+    return false;
+  });
 }
 
 module.exports = { countLines };

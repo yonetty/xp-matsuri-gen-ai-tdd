@@ -1,0 +1,22 @@
+languages:
+  JavaScript:
+    extensions:
+      - js
+    commentPattern: ^\s*\/\/|^\s*\/\*|\*\/\s*$
+
+  Markdown:
+    extensions:
+      - md
+      - markdown
+    commentPattern: ^\s*<!--
+
+  YAML:
+    extensions:
+      - yml
+      - yaml
+    commentPattern: ^\s*#
+
+excludedDirectories:
+  - node_modules
+  - dist
+  - build

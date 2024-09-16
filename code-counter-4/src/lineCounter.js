@@ -49,6 +49,10 @@ async function countLines(files, config) {
 }
 
 function isCommentLine(line, commentPatterns) {
+  if (!commentPatterns) {
+    return false;
+  }
+
   return commentPatterns.some((pattern) => {
     if (pattern instanceof RegExp) {
       return pattern.test(line);

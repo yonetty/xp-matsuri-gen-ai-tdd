@@ -14,6 +14,10 @@ describe("countLines", () => {
         extensions: [".py"],
         comment_patterns: [/^\s*#.*/],
       },
+      markdown: {
+        extensions: [".md"],
+        comment_patterns: [],
+      },
     },
   };
 
@@ -50,6 +54,16 @@ function hello() {
 // End of file`.trim()
     );
     await fs.writeFile(path.join(testDir, "empty.js"), "");
+    // 新しいMarkdownファイルを追加
+    await fs.writeFile(
+      path.join(testDir, "test.md"),
+      `
+# This is a heading
+This is normal text
+
+> This is a blockquote
+- This is a list item`.trim()
+    );
   });
 
   afterAll(async () => {
@@ -116,5 +130,15 @@ function hello() {
     await expect(countLines(files, config)).rejects.toThrow(
       "ファイルが見つかりません"
     );
+  });
+
+  test("comment_patterns が空配列の場合、すべての行をコードとしてカウントすること", async () => {
+    const files = [
+      { path: path.join(testDir, "test.md"), language: "markdown" },
+    ];
+    const result = await countLines(files, config);
+    expect(result).toEqual({
+      markdown: { files: 1, code: 4, comment: 0, blank: 1, total: 5 },
+    });
   });
 });

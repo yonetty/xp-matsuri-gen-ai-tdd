@@ -8,7 +8,7 @@ describe("each関数のテスト", () => {
     expect(mockCallback).not.toHaveBeenCalled();
   });
 
-  test.skip("データ行の数だけコールバックが呼ばれ、引数にはそれぞれのデータが渡される（属性1つ）", () => {
+  test("データ行の数だけコールバックが呼ばれ、引数にはそれぞれのデータが渡される（属性1つ）", () => {
     const mockCallback = jest.fn();
     each`
         name
@@ -29,7 +29,7 @@ describe("each関数のテスト", () => {
     });
   });
 
-  test.skip("データ行の数だけコールバックが呼ばれ、引数にはそれぞれのデータが渡される", () => {
+  test("データ行の数だけコールバックが呼ばれ、引数にはそれぞれのデータが渡される", () => {
     const mockCallback = jest.fn();
     each`
         name | age | isAdmin
